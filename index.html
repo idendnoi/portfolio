@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>최영환 포트폴리오</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap">
+<style>
+/* Layout: one long A4-derived column (max 1040px), thin rules between sections, image/text split rows that alternate sides */
+:root{
+  --bg:#ffffff; --fg:#0a0a0a; --ink2:#404040; --muted:#6f7177; --line:#e6e7ea; --soft:#f5f6f8;
+  --blue:#3b82f6; --teal:#0f9488; --violet:#7c5cf5; --dot1:#3b82f6; --dot2:#14b8a6;
+  --badge-g-bg:#dcfce7; --badge-g-fg:#166534; --badge-b-bg:#dbeafe; --badge-b-fg:#1e40af;
+  --badge-y-bg:#fef3c7; --badge-y-fg:#92400e; --badge-r-bg:#fee2e2; --badge-r-fg:#991b1b;
+  --btn-bg:#0a0a0a; --btn-fg:#ffffff; --live:#22c55e; --img-bg:#f1f2f4;
+  --f-kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-en:"Montserrat","Noto Sans KR",system-ui,sans-serif;
+}
+/* Single light look on purpose: always white, whatever the viewer's theme */
+:root,:root[data-theme]{color-scheme:light}
+html{background:#ffffff}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-kr);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.en{font-family:var(--f-en)}
+.label{font-family:var(--f-en);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.label.blue{color:var(--blue)} .label.teal{color:var(--teal)}
+h2{font-family:var(--f-en);font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance}
+h3{margin:0;text-wrap:balance}
+p{margin:0}
+.sub{color:var(--muted);font-size:17px;max-width:62ch;margin-top:10px}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:2px solid var(--fg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--f-en);font-weight:500;font-size:14px;white-space:nowrap}
+.brand i{width:7px;height:7px;border-radius:50%;background:var(--live);display:inline-block}
+.nav{display:flex;gap:20px;font-family:var(--f-en);font-size:13px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;color:var(--muted);white-space:nowrap;padding:6px 0}
+.nav a:hover,.nav a:focus-visible{color:var(--fg)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+section{padding-block:clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+
+/* hero */
+.hero{display:grid;grid-template-columns:150px minmax(0,1fr) 240px;gap:40px;align-items:start}
+.hero .photo{width:150px;aspect-ratio:684/912;object-fit:cover;border-radius:6px;background:var(--img-bg)}
+.kicker{font-family:var(--f-en);font-size:12px;letter-spacing:.2em;color:var(--muted)}
+.tagline{font-weight:300;font-size:clamp(20px,2.4vw,24px);line-height:1.5;margin-top:10px}
+.name{font-weight:900;font-size:clamp(52px,8vw,76px);letter-spacing:-.04em;line-height:1.05;margin:14px 0 18px}
+.lede{color:var(--ink2);font-size:17px}
+.meta{margin-top:18px;font-family:var(--f-en);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.aside{display:grid;gap:26px;border-left:1px solid var(--line);padding-left:24px}
+.now b{display:block;font-family:var(--f-en);font-weight:600;font-size:15px;margin-top:8px}
+.now span{display:block;font-size:13px;color:var(--ink2)}
+.now small{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:13px;line-height:1.5;color:var(--ink2);background:var(--bg)}
+
+/* capsule card */
+.cap{margin-top:40px;display:grid;grid-template-columns:20px minmax(0,1fr);gap:20px}
+.rail{position:relative}
+.rail::before{content:"";position:absolute;left:5px;top:8px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--dot1),var(--dot2))}
+.rail::after{content:"";position:absolute;left:9.5px;top:24px;bottom:0;width:1px;background:var(--line)}
+.card{border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:14px;padding:clamp(20px,3vw,32px);display:grid;gap:22px}
+.card-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo-row{display:flex;align-items:center;gap:10px}
+.logo-row img{height:54px;width:auto}
+.badge{display:inline-block;font-weight:700;font-size:12px;line-height:1.4;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.b-g{background:var(--badge-g-bg);color:var(--badge-g-fg)} .b-b{background:var(--badge-b-bg);color:var(--badge-b-fg)}
+.b-y{background:var(--badge-y-bg);color:var(--badge-y-fg)} .b-r{background:var(--badge-r-bg);color:var(--badge-r-fg)}
+.role{font-weight:500;font-size:16px;margin-top:6px}
+.team{font-size:13px;color:var(--muted)}
+.date{font-family:var(--f-en);font-size:13px;color:var(--muted);white-space:nowrap}
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.win b{display:block;font-size:15px}
+.win b em{font-style:normal;font-family:var(--f-en);color:var(--blue);margin-right:8px}
+.win p{font-size:14px;color:var(--ink2);margin-top:4px}
+
+/* problem / solution */
+.statement{font-size:clamp(19px,2.2vw,23px);line-height:1.6;max-width:44ch;margin-top:56px;text-wrap:balance}
+.ps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:40px}
+.ps h3{font-size:19px;line-height:1.5;margin:10px 0 16px}
+ul.dots{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.dots li{position:relative;padding-left:18px;font-size:15px;color:var(--ink2)}
+ul.dots li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--dot1),var(--dot2))}
+
+/* business model */
+.bm-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:28px}
+.tier{padding:22px 18px 22px 20px;border-left:1px solid var(--line);display:grid;gap:4px;align-content:start}
+.tier:first-child{border-left:0;padding-left:0}
+.tier .t{font-weight:700;font-size:15px;color:var(--blue)}
+.tier:first-child .t{color:var(--teal)}
+.price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price strong{font-family:var(--f-en);font-weight:900;font-size:32px;letter-spacing:-.03em;line-height:1.2}
+.price span{font-size:12px;color:var(--muted)}
+.tier ul{list-style:none;margin:8px 0 0;padding:0;font-size:14px;color:var(--ink2);display:grid;gap:2px}
+.passes{margin-top:18px}
+
+/* market + roadmap */
+.market{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px}
+.market div{padding:0 20px;border-left:1px solid var(--line)}
+.market div:first-child{padding-left:0;border-left:0}
+.market strong{display:block;font-weight:900;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;line-height:1.25}
+.market span{font-size:14px;color:var(--muted)}
+.road{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:48px;list-style:none;padding:0}
+.road li{display:grid;gap:6px;padding-right:12px}
+.road .tick{display:flex;align-items:center}
+.road .tick i{width:10px;height:10px;border-radius:50%;background:var(--line);flex:none}
+.road .tick::after{content:"";height:1px;flex:1;background:var(--line)}
+.road li.done .tick i{background:linear-gradient(135deg,var(--dot1),var(--dot2))}
+.road li.next .tick i{background:var(--blue)}
+.road b{font-family:var(--f-en);font-size:15px}
+.road span{font-size:14px;color:var(--muted);line-height:1.5}
+
+/* shenzhen */
+.qs{margin-top:28px;border-top:1px solid var(--line)}
+.q{display:grid;grid-template-columns:44px 96px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.q .n{font-family:var(--f-en);font-weight:600;color:var(--teal)}
+.q b{font-size:16px}
+.q p{color:var(--ink2);font-size:15px}
+
+/* projects */
+.projects{display:grid;gap:0;margin-top:44px}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);padding-block:44px;border-top:1px solid var(--line);align-items:center}
+.proj.flip .vis{order:2}
+.vis{display:grid;gap:6px}
+.vis img{width:100%;border-radius:8px;background:var(--img-bg)}
+.vis .pair{display:grid;gap:6px}
+.txt{display:grid;gap:14px;min-width:0}
+.txt .eyebrow{font-size:14px;color:var(--muted)}
+.ttl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ttl h3{font-weight:900;font-size:clamp(24px,3vw,30px);letter-spacing:-.03em;line-height:1.25}
+dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:14px}
+dt{font-weight:700} dd{margin:0;color:var(--muted)}
+.qr{display:flex;align-items:center;gap:14px}
+.qr img{width:84px;height:84px;border-radius:6px;background:#fff;padding:4px;border:1px solid var(--line)}
+.qr p{font-size:13px;color:var(--muted)}
+
+/* background */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.ed{border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:6px;align-content:start}
+.ed h3{font-size:17px;line-height:1.45}
+.ed .s{font-size:13px;color:var(--muted)}
+.ed p{font-size:14px;color:var(--ink2);white-space:pre-line}
+.ed .thumbs{display:grid;grid-template-columns:1.55fr 1.33fr;gap:6px;margin-top:6px}
+.ed .thumbs img{width:100%;aspect-ratio:auto;border-radius:6px}
+.sub-h{font-family:var(--f-en);font-weight:700;font-size:26px;letter-spacing:-.02em;margin:64px 0 0}
+.awards{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--line)}
+.awards li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline;font-size:15px}
+.awards .y{font-family:var(--f-en);font-weight:600;color:var(--teal)}
+.awards b{white-space:nowrap}
+.skills{display:grid;gap:16px;margin-top:22px}
+.skill{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:center}
+
+/* vision */
+.vision h2{font-family:var(--f-kr);font-weight:900;font-size:clamp(32px,5vw,52px);letter-spacing:-.04em;line-height:1.3;margin-top:16px}
+.vision .body{font-size:18px;line-height:1.85;color:var(--ink2);max-width:60ch;margin-top:28px;display:grid;gap:18px}
+.vision .body b{color:var(--fg)}
+.contact{margin-top:72px;padding-top:56px;border-top:1px solid var(--line);text-align:center;display:grid;justify-items:center;gap:14px}
+.contact h3{font-size:22px}
+.contact p{color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 22px;font-family:var(--f-en);font-weight:500;font-size:15px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;user-select:all}
+.pill.dark{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.pill small{font-family:var(--f-kr);font-size:12px;opacity:.7;user-select:none}
+.toast{font-size:13px;color:var(--teal);min-height:1.4em}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;padding-block:20px;font-size:13px;color:var(--muted)}
+
+/* responsive */
+@media (max-width:900px){
+  .hero{grid-template-columns:120px minmax(0,1fr)}
+  .hero .photo{width:120px}
+  .aside{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tier:nth-child(3){border-left:0;padding-left:0}
+  .tier:nth-child(n+3){border-top:1px solid var(--line)}
+  .road{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  body{font-size:15px}
+  html{scroll-padding-top:60px}
+  .top .wrap{min-height:48px}
+  .brand{display:none}
+  .nav{gap:18px;width:100%;justify-content:space-between}
+  .nav a{font-size:13px;padding:12px 0}
+  section{padding-block:48px}
+  .sub{font-size:15px}
+  .hero{grid-template-columns:1fr;gap:24px}
+  .hero .photo{width:112px}
+  .name{margin:8px 0 12px}
+  .lede{font-size:15px}
+  .card{padding:18px}
+  .logo-row img{height:40px}
+  .statement{margin-top:40px}
+  .ps{gap:32px}
+  .ps h3{font-size:17px}
+  .ps h3 br,.tagline br{display:none}
+  .proj{padding-block:32px;gap:18px}
+  .projects{margin-top:28px}
+  .vision .body{font-size:16px}
+  .contact{margin-top:48px;padding-top:40px}
+  .pill{font-size:14px;padding:11px 18px}
+  .sub-h{margin-top:48px;font-size:22px}
+  .aside{grid-template-columns:1fr}
+  .wins,.ps,.market{grid-template-columns:1fr}
+  .wins{gap:16px}
+  .market{gap:18px}
+  .market div{padding:0;border-left:0}
+  .proj,.proj.flip{grid-template-columns:1fr}
+  .proj.flip .vis{order:0}
+  .grid3{grid-template-columns:1fr}
+  .q{grid-template-columns:36px minmax(0,1fr)}
+  .q p{grid-column:2}
+  .road{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skill{grid-template-columns:1fr;gap:8px}
+  .awards li{grid-template-columns:44px minmax(0,1fr);gap:4px 14px}
+  .awards b{grid-column:2;white-space:normal}
+  .cap{grid-template-columns:1fr}
+  .rail{display:none}
+}
+@media (max-width:420px){
+  .nav{gap:14px}
+  .nav a{font-size:12px}
+  .tiers{grid-template-columns:1fr}
+  .q{grid-template-columns:30px minmax(0,1fr);gap:10px}
+  .btns{flex-direction:column;align-items:stretch;width:100%}
+  .pill{justify-content:center}
+  .tier{border-left:0!important;padding-left:0!important}
+  .tier+.tier{border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">CAPSULE Founder &amp; CEO <i aria-hidden="true"></i></div>
+    <nav class="nav" aria-label="섹션">
+      <a href="#about">About</a>
+      <a href="#capsule">CAPSULE</a>
+      <a href="#projects">Projects</a>
+      <a href="#background">Background</a>
+      <a href="#vision">Vision</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="hero">
+      <img class="photo" src="img/photo.jpg" alt="최영환 증명사진" width="684" height="912">
+      <div>
+        <div class="kicker">PORTFOLIO / 2026</div>
+        <p class="tagline">혼자 공부하는 사람 곁에,<br>‘같이 있는 누군가’를 만듭니다.</p>
+        <h1 class="name">최영환</h1>
+        <p class="lede">현장에서 문제를 찾고, 만들어 봤습니다.<br>벤처중소기업학과에서 창업을 배우고,<br>멋쟁이사자처럼에서 프로덕트를 만들었습니다.</p>
+        <p class="meta">숭실대학교 벤처중소기업학과 &nbsp;·&nbsp; Korean · English</p>
+      </div>
+      <aside class="aside">
+        <div class="now">
+          <div class="label">Currently</div>
+          <b>CAPSULE Founder &amp; CEO</b>
+          <span>@ AI 캐릭터 스터디 플랫폼</span>
+          <small class="tnum">2026.10 — 현재</small>
+          <span>@ 멋쟁이사자처럼 14기 PM</span>
+          <small class="tnum">2026.03 — 현재</small>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:10px">Focus</div>
+          <div class="chips"><span class="chip">문제 정의</span><span class="chip">고객 인터뷰</span><span class="chip">시장 검증</span><span class="chip">BM 설계</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CAPSULE -->
+<section id="capsule">
+  <div class="wrap">
+    <div class="label blue">01 — CAPSULE</div>
+    <h2 style="margin-top:12px">Experience</h2>
+    <p class="sub">IT개발창업동아리 멋쟁이사자처럼 소속 8명의 팀과 AI 캐릭터 스터디 플랫폼을 만들고 있습니다. 출시 전에 기술과 수요부터 검증하고 있습니다.</p>
+
+    <div class="cap">
+      <div class="rail" aria-hidden="true"></div>
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <div class="logo-row"><img src="img/logo.png" alt="CAPSULE" width="900" height="301"><span class="badge b-g">창업</span></div>
+            <p class="role">Founder &amp; CEO · AI 캐릭터 스터디 플랫폼</p>
+            <p class="team">멋쟁이사자처럼 8인 팀 · CEO 1 · PM 1 · Design 2 · Frontend 2 · Backend 2</p>
+          </div>
+          <div class="date tnum">2026.10 – 현재</div>
+        </div>
+        <div>
+          <h3 style="font-size:16px;margin-bottom:14px">주요 성과</h3>
+          <div class="wins">
+            <div class="win"><b><em>01</em>기술 검증</b><p>캐릭터와 웹캠 감지를 동시에 실행해 M4 맥북에서 실측했습니다.</p></div>
+            <div class="win"><b><em>02</em>수요 검증</b><p>랜딩페이지 투표와 메타 광고 집행으로 반응을 먼저 확인하고 있습니다.</p></div>
+            <div class="win"><b><em>03</em>BM 피벗</b><p>인터뷰에서 “공부에 돈 내기 싫다”는 의견을 듣고 공부는 무료, 관계에만 과금하도록 바꿨습니다.</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="statement">대학생은 혼자 공부하면 폰으로 샙니다. 이미 ‘같이 공부하는 감각’을 찾고 있지만, 지금의 대안은 나를 보지 않거나 사람이 필요합니다.</p>
+    <div class="ps">
+      <div>
+        <div class="label blue">Problem</div>
+        <h3>새벽 2시, 혼자 공부하는 대학생에게는<br>‘나를 보고 반응하는 누군가’가 없습니다.</h3>
+        <ul class="dots">
+          <li>약 2만 3천개 이상의 ‘스터디위드미’ 영상</li>
+          <li>디스코드, 줌에서 사람들과 모여서 각자 공부하는 문화</li>
+          <li>영상은 나를 보지 않고, 모각공은 친구와 시간을 맞춰야 합니다.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="label teal">Solution</div>
+        <h3>웹캠을 켜면 캐릭터가 마주 앉아 공부하고,<br>폰을 보면 알아채고 말을 겁니다.</h3>
+        <ul class="dots">
+          <li>카메라 판정 + 캐릭터 애착 + AI 대화</li>
+          <li>영상은 기기 밖으로 나가지 않고 브라우저 안에서만 판정합니다.</li>
+          <li>호감도는 검증된 공부 시간으로만 쌓여 전환 비용이 됩니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:88px">
+      <div class="bm-head">
+        <h2>Business Model</h2>
+        <p style="color:var(--muted)">공부는 무료, 관계는 프리미엄 · 공부를 시작할 때 캐릭터와 얼마나 깊게 함께할지 등급을 고릅니다.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier"><span class="t">베이직</span><div class="price"><strong class="tnum">0</strong><span>무료 · 무제한</span></div>
+          <ul><li>· 딴짓 반응·복귀 칭찬</li><li>· 쉬는 시간 대화 하루 3턴</li><li>· 미리 만든 반응 음성</li></ul></div>
+        <div class="tier"><span class="t">스탠다드</span><div class="price"><strong class="tnum">200</strong><span>크레딧 / 1세트</span></div>
+          <ul><li>· 기본 AI 모델로 자유 대화</li><li>· 오늘 공부 내용 반영</li><li>· 기본 음성</li></ul></div>
+        <div class="tier"><span class="t">프리미엄</span><div class="price"><strong class="tnum">500</strong><span>크레딧 / 1세트</span></div>
+          <ul><li>· 이름·시험 일정·약속 기억</li><li>· 감정이 살아 있는 대사</li><li>· 캐릭터 전용 고품질 보이스</li></ul></div>
+        <div class="tier"><span class="t">스페셜</span><div class="price"><strong class="tnum">1,000</strong><span>크레딧 / 1세트</span></div>
+          <ul><li>· 상위 AI 모델, 가장 자유로운 대화</li><li>· 스페셜 전용 반응 모션</li><li>· 고품질 보이스 + 기념 보이스</li></ul></div>
+      </div>
+      <div class="chips passes"><span class="chip">시험기간 응원 패스 6,900원 · 2주</span><span class="chip">캐릭터 패스 9,900원 · 30일</span><span class="chip">보이스 메시지 100 · 선물 100~1,000 크레딧</span></div>
+    </div>
+
+    <div style="margin-top:88px">
+      <h2>Market &amp; Roadmap</h2>
+      <p class="sub">한국에서 검증한 구조로 일본·중국, 북미 순서로 나아갑니다.</p>
+      <div class="market">
+        <div><div class="label">TAM</div><strong class="tnum">18조 원</strong><span>전 세계 학습·생산성 앱</span></div>
+        <div><div class="label">SAM</div><strong class="tnum">790억 원</strong><span>한국·일본·중국 대학생</span></div>
+        <div><div class="label">SOM</div><strong class="tnum">11.7억 원</strong><span>2029년 매출 목표</span></div>
+      </div>
+      <ol class="road">
+        <li class="done"><div class="tick"><i></i></div><b class="tnum">2026.10</b><span>기술·수요 검증</span></li>
+        <li class="next"><div class="tick"><i></i></div><b class="tnum">11.7</b><span>멋사 베타 데모데이</span></li>
+        <li class="next"><div class="tick"><i></i></div><b>12월</b><span>기말고사 시즌 웹 출시</span></li>
+        <li><div class="tick"><i></i></div><b>2027 상</b><span>UGC 공개 · 운영 흑자</span></li>
+        <li><div class="tick"><i></i></div><b>2027 하</b><span>일본·중국 진출</span></li>
+        <li><div class="tick"><i></i></div><b>2028~</b><span>북미 · 투자 유치</span></li>
+      </ol>
+    </div>
+
+    <div style="margin-top:88px">
+      <h2>In Shenzhen <span style="font-family:var(--f-kr);font-weight:500;color:var(--muted)">深圳</span></h2>
+      <p class="sub">얻어가는 데서 끝내지 않기 위해, 이 세 가지를 중국 현지에서 검증하겠습니다.</p>
+      <div class="qs">
+        <div class="q"><span class="n">Q1</span><b>시장</b><p>중국 대학생에게도 ‘함께 공부’ 수요가 있는지, 웹캠 거부감은 어느 정도인지 확인하겠습니다.</p></div>
+        <div class="q"><span class="n">Q2</span><b>기술·규제</b><p>AI 소프트웨어 기술에 있어서 부족한 점이 무엇인지, 활용할 수 있는 기술이 무엇이 있는지 확인하겠습니다.</p></div>
+        <div class="q"><span class="n">Q3</span><b>전략</b><p>현지 AC·VC가 보기에 한국 → 일본·중국 → 북미 순서가 맞는지, 중국을 넣어야 하는지 묻겠습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="label blue">02 — Projects</div>
+    <h2 style="margin-top:12px">Projects</h2>
+    <p class="sub">문제를 찾은 과정과 검증한 방식 중심으로 정리한 프로젝트입니다.</p>
+
+    <div class="projects">
+      <article class="proj">
+        <div class="vis">
+          <img src="img/docu-feature.jpg" alt="DOCU-C 기능 화면" width="1400" height="788" loading="lazy">
+          <img src="img/docu-cover.jpg" alt="DOCU-C 표지" width="1400" height="788" loading="lazy">
+        </div>
+        <div class="txt">
+          <p class="eyebrow">사업 기획서 양식 자동 통일 에이전트</p>
+          <div class="ttl"><h3 class="en">DOCU-C</h3><span class="badge b-r">SK 써니C 5기</span></div>
+          <dl><dt>역할</dt><dd>부팀장 · 6인 팀 · 2026.07–08</dd><dt>과제</dt><dd>SK이노베이션 현직자 과제</dd></dl>
+          <ul class="dots">
+            <li>현직자와 3회 인터뷰하며 실제 업무 화면을 보여 달라고 요청했습니다.</li>
+            <li>사내 자료를 외부 AI에 넣을 수 없다는 보안 제약을 확인하고, 기능을 ‘양식 통일’ 하나로 좁혔습니다.</li>
+            <li>로컬에서만 작동하는 오픈소스 PPT 편집 구조로 보안을 지키며 양식을 자동 통일했습니다.</li>
+          </ul>
+          <div class="chips"><span class="chip">현직자 인터뷰 3회</span><span class="chip">사전교육 16시간</span><span class="chip">로컬 에이전트</span></div>
+        </div>
+      </article>
+
+      <article class="proj flip">
+        <div class="vis">
+          <img src="img/ideathon.jpg" alt="아이디어톤 GS25 사장님 인터뷰 슬라이드" width="1400" height="780" loading="lazy">
+          <img src="img/hackathon.jpg" alt="중앙해커톤 시장 검증 결과" width="1400" height="786" loading="lazy">
+        </div>
+        <div class="txt">
+          <p class="eyebrow">IT 개발·창업 동아리에서 만든 프로덕트 3개</p>
+          <div class="ttl"><h3>멋쟁이사자처럼 PM</h3><span class="badge b-b">14기</span></div>
+          <dl><dt>역할</dt><dd>Product Manager · Lead</dd><dt>기간</dt><dd>2026.03 — 현재</dd></dl>
+          <ul class="dots">
+            <li>바이브코딩 대회에서 탄막 게임을 약 1주일 만에 출시해 3등을 받았습니다.</li>
+            <li>아이디어톤에서 인터뷰지를 직접 만들고 GS25 사장님을 인터뷰해 ‘중간관리자의 공백’을 정의했습니다.</li>
+            <li>중앙해커톤에서 ‘커플을 위한 AI기반 메신저’ 서비스의 메타 광고와 콜드메일 190건으로 실제 지불 의사를 확인했습니다.</li>
+          </ul>
+          <div class="chips"><span class="chip">바이브코딩 3등</span><span class="chip">랜딩 클릭 179회</span><span class="chip">콜드메일 190건</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="vis">
+          <img src="img/council-bar.jpg" alt="대동제 학생회 주점" width="1200" height="800" loading="lazy">
+          <img src="img/council-group.jpg" alt="학생회 단체 사진" width="1200" height="726" loading="lazy">
+        </div>
+        <div class="txt">
+          <p class="eyebrow">제26대 벤처중소기업학과 학생회장 · 2022.12–2023.12</p>
+          <div class="ttl"><h3>대동제 주점 운영을 통한 수익 창출</h3><span class="badge b-g">순수익 360만 원</span></div>
+          <dl><dt>역할</dt><dd>학생회장</dd><dt>핵심</dt><dd>인센티브 구조 설계</dd></dl>
+          <ul class="dots">
+            <li>부원 사비로 출자하면 수익 전액이 부원에게 돌아간다는 구조를 먼저 짚었습니다.</li>
+            <li>일방적으로 공지하지 않고 토론 자리에서 공유해 이해를 먼저 구했습니다.</li>
+            <li>운영 방식과 예산안까지 부원들이 직접 정하도록 맡겨 오너십을 만들었습니다.</li>
+          </ul>
+          <div class="chips"><span class="chip">축제 주점 순수익 약 360만 원</span></div>
+        </div>
+      </article>
+
+      <article class="proj flip">
+        <div class="vis">
+          <img src="img/inno-field.jpg" alt="동작구 통학로 현장 답사" width="1400" height="1048" loading="lazy">
+          <div class="pair" style="grid-template-columns:1.215fr .616fr">
+            <img src="img/inno-proto.jpg" alt="안전 손잡이 프로토타입" width="768" height="632" loading="lazy">
+            <img src="img/inno-test.jpg" alt="시제품 테스트" width="590" height="958" loading="lazy">
+          </div>
+        </div>
+        <div class="txt">
+          <p class="eyebrow">INNO SCHOOL 프로젝트+ 9기 · 경사로 등하굣길 안전 손잡이</p>
+          <div class="ttl"><h3>동행 : Dongjak Hand</h3><span class="badge b-y">대상</span></div>
+          <dl><dt>역할</dt><dd>기획 · 마케팅 · 4인 융합팀</dd><dt>기간</dt><dd>2023.09 — 11</dd></dl>
+          <ul class="dots">
+            <li>설문을 위해 답사하던 중 가파른 통학로를 뛰어다니는 아이들을 보고 문제를 다시 정의했습니다.</li>
+            <li>동작구 초교 20곳을 조사해 공통 문제임을 확인한 뒤 아이템을 바꿨습니다.</li>
+            <li>시제품 테스트와 피드백 반영을 거쳐 채택 캠페인까지 설계했습니다.</li>
+          </ul>
+          <div class="chips"><span class="chip">통학로 20곳</span><span class="chip">답사 5회</span><span class="chip">학부모 인터뷰 5명</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="vis">
+          <div class="pair" style="grid-template-columns:1fr 1fr">
+            <img src="img/hansol-1.jpg" alt="한솔그룹 AI 숏폼 장면 1" width="700" height="1241" loading="lazy">
+            <img src="img/hansol-2.jpg" alt="한솔그룹 AI 숏폼 장면 2" width="700" height="1241" loading="lazy">
+          </div>
+        </div>
+        <div class="txt">
+          <p class="eyebrow">한솔그룹 대학생 AI 숏폼 공모전 · 2026.08–09</p>
+          <div class="ttl"><h3>한솔그룹 AI 숏폼 공모전</h3><span class="badge b-y">최우수상</span></div>
+          <dl><dt>역할</dt><dd>기업 분석 · 기획 · AI 이미지·영상 생성</dd><dt>도구</dt><dd>GPT Image · Kling</dd></dl>
+          <ul class="dots">
+            <li>2분 안에 담기 위해 일상과 맞닿은 3개 계열사로 좁혔습니다.</li>
+            <li>한솔제지의 ‘종이’에서 착안한 페이퍼아트 스타일로 제작했습니다.</li>
+            <li>완성작을 인스타그램에 올려 반응 지표까지 확인했습니다.</li>
+          </ul>
+          <div class="chips"><span class="chip">조회 약 4,200회</span><span class="chip">제작비 약 10만 원</span></div>
+          <div class="qr"><img src="img/qr.jpg" alt="숏폼 영상 QR 코드" width="357" height="357" loading="lazy"><p>QR을 비추면<br>숏폼 영상으로 이동합니다.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BACKGROUND -->
+<section id="background">
+  <div class="wrap">
+    <div class="label blue">03 — Background</div>
+    <h2 style="margin-top:12px">Education &amp; Activities</h2>
+    <div class="grid3">
+      <div class="ed"><div class="label blue">Education</div><h3>숭실대학교</h3><span class="s">벤처중소기업학과 전공 · 언론홍보학과 복수전공</span><p>전체 3.99 · 전공 4.06
+Startup Design Thinking, 스타트업비즈니스모델개발론, 글로벌 창업과 해외 진출 등을 수강했습니다.</p></div>
+      <div class="ed"><div class="label blue">Club</div><h3>ACE 17기</h3><span class="s">광고 마케팅 동아리 · 2023</span><p>팀 리더로 기획서 4편을 쓰고 동아리 경쟁 PT에서 우승했습니다.</p></div>
+      <div class="ed"><div class="label blue">Club</div><h3>SSU:MAS</h3><span class="s">경영전략 학술 소모임 · 2022</span><p>프레임워크 5종을 배우고 배달의민족·무신사 사업기획제안서를 썼습니다.</p></div>
+      <div class="ed"><div class="label blue">Contest</div><h3>강소기업 취업희망 콘테스트</h3><span class="s">2023 최우수상 · 5인 팀장</span><p>가상의 취준생 ‘김벤처’의 눈으로 CRM기업 핑거포스트를 분석했습니다.</p></div>
+      <div class="ed"><div class="label teal">Activity</div><h3>제26대 벤처중소기업학과 학생회장<br>16대 경영대학 선거관리위원회</h3><span class="s">2023</span><p>2년동안 학생회에 속해 더 나은 학생사회의 발전과 선순환을 도모했습니다. 다음 학생회가 공정하게 세워지도록 선거 전 과정을 관리했습니다.</p></div>
+      <div class="ed"><div class="label teal">Activity</div><h3>농촌봉사활동</h3><span class="s">2022 평창 · 2023 양구</span><p>2년 연속 일손이 부족한 농가를 찾아 일을 도왔습니다.</p>
+        <div class="thumbs"><img src="img/volunteer-2022.jpg" alt="2022 평창 농촌봉사" width="900" height="581" loading="lazy"><img src="img/volunteer-2023.jpg" alt="2023 양구 농촌봉사" width="900" height="675" loading="lazy"></div></div>
+    </div>
+
+    <h3 class="sub-h">Awards</h3>
+    <ul class="awards">
+      <li><span class="y tnum">2026</span><span>한솔그룹 대학생 AI 숏폼 공모전</span><b>최우수상</b></li>
+      <li><span class="y tnum">2026</span><span>대한민국 녹색건축대전 설계 및 기술 부문</span><b>기업특별상 · (주)에코다</b></li>
+      <li><span class="y tnum">2026</span><span>멋쟁이사자처럼 바이브코딩 프로덕트 개발대회</span><b>3등</b></li>
+      <li><span class="y tnum">2023</span><span>숭실대학교 INNO SCHOOL 프로젝트+ 9기</span><b>대상</b></li>
+      <li><span class="y tnum">2023</span><span>숭실대학교 관내 강소기업 취업희망 콘테스트</span><b>최우수상</b></li>
+    </ul>
+
+    <h3 class="sub-h">Skills &amp; Certificates</h3>
+    <div class="skills">
+      <div class="skill"><span class="label">Certificates</span><div class="chips"><span class="chip">ADsP 데이터분석 준전문가</span><span class="chip">ACP 포토샵</span><span class="chip">ITQ 파워포인트</span><span class="chip">ITQ 한글</span></div></div>
+      <div class="skill"><span class="label">Language</span><div class="chips"><span class="chip">TOEIC 840</span></div></div>
+      <div class="skill"><span class="label">Tools</span><div class="chips"><span class="chip">Claude · 바이브 코딩</span><span class="chip">Notion · 팀 워크스페이스</span><span class="chip">Figma · 팀 워크스페이스</span><span class="chip">n8n · 메일 자동화</span></div></div>
+      <div class="skill"><span class="label">Others</span><div class="chips"><span class="chip">1종 대형 면허 (운전병)</span><span class="chip">육군 만기 전역</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="vision">
+  <div class="wrap">
+    <div class="label blue">04 — Vision</div>
+    <h2>도움이 도는 선순환을<br>만드는 창업가가 되겠습니다.</h2>
+    <div class="body">
+      <p>저는 Taker와 Matcher를 넘어 Giver를 지향합니다. Giver는 도움을 받는 데에서 멈추지 않고, 다음 사람에게 건네 <b>도움의 선순환 플라이휠을 굴리는 사람</b>입니다.</p>
+      <p>이번 프로그램도 얻어가는 데서 끝내지 않겠습니다. 캡슐을 실제 회사로 키워, 저를 성장시켜 준 <b>숭실대학교와 창업지원단</b>에 다시 돌려주는 선배 창업가가 되겠습니다.</p>
+    </div>
+    <div class="contact">
+      <h3>끝까지 읽어 주셔서 감사합니다.</h3>
+      <p>아래를 누르면 연락처가 복사됩니다.</p>
+      <div class="btns">
+        <button class="pill dark" type="button" id="copy-mail" data-copy="idenchoi77@gmail.com">idenchoi77@gmail.com <small>복사</small></button>
+        <button class="pill" type="button" id="copy-tel" data-copy="010-9113-4719">010-9113-4719 <small>복사</small></button>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 최영환</span><span class="en">CAPSULE Founder</span></div></footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var v=b.getAttribute('data-copy'),t=document.getElementById('toast');
+    function ok(){t.textContent=v+' 복사됨';}
+    function fallback(){var r=document.createRange();r.selectNodeContents(b.firstChild);var s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent='선택했습니다. Ctrl+C로 복사하세요.';}
+    try{navigator.clipboard.writeText(v).then(ok,fallback);}catch(e){fallback();}
+  });
+});
+</script>
+</body>
+</html>
